@@ -1,6 +1,13 @@
 console.log('hi');
 
 var slimes = [];
+var names = [
+    'bob',
+    'georgia',
+    'rhodes',
+    'claudia',
+    'graw'
+];
 
 function draw(amt){
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -11,7 +18,7 @@ function draw(amt){
     for (i=1; i < amt+1; i++){
         var slime = drawSlime(20);
         slimes.push(
-            {slime:slime,name:'bob',personality:{emo:0,coolkid:0}},
+            {slime:slime,name:names[Math.floor(Math.random()*names.length)],personality:{emo:0,coolkid:0}},
             // {slime:slime,name:'bob',personality:{emo:12,coolkid:100}},
             // {slime:slime2,name:'georgia',personality:{emo:65,misandrist:100}}
         );
