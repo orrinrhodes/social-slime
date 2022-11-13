@@ -69,10 +69,10 @@ function drawSlime(diam){
 
 var div1 = spawnElem('div');
 
-console.log('-'.repeat(75));
+console.log('-'.repeat(70));
 
 function read(){
-    console.log(slimes);
+    console.log(slimes,'\n');
     slimes.forEach(function(slime){
     var personality = slime.personality;
     for (const [attribute,value] of Object.entries(personality)) {
