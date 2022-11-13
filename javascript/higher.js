@@ -30,8 +30,9 @@ function spawnSlime(cnvs,x,y,diam){
 
     // ctx.fillRect(25, 25, 100, 100);
     // x,y relative to canvas != body
-    ctx.arc(x, y, diam, 0, Math.PI * 2, true); // circle
-    ctx.fill();
+    var circle = new Path2D();
+    circle.arc(x, y, diam, 0, Math.PI * 2); // circle
+    ctx.fill(circle);
 };
 
 var div1 = spawnElem('div');
