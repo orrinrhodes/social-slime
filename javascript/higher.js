@@ -33,7 +33,7 @@ function spawnElem(elem,prop){
             newElem.style.backgroundColor = 'grey';
             newElem.height = 500;
             newElem.width = 500;
-            document.body.appendChild(newElem);
+            document.getElementById('space').appendChild(newElem);
         };
     };
 
@@ -61,20 +61,20 @@ function drawSlime(diam){
 };
 
 var div1 = spawnElem('div');
-draw(5);
 
-console.warn('-'.repeat(75));
+console.log('-'.repeat(75));
 
 function read(){
-    console.table(slimes);
+    console.log(slimes);
     slimes.forEach(function(slime){
     var personality = slime.personality;
     for (const [attribute,value] of Object.entries(personality)) {
         // console.log(attribute,value);
     };
-    console.warn(slime.name);
-    console.table(personality)
+    // console.warn(slime.name);
+    // console.log(personality)
 });
 };
 
+draw(3);
 read();
