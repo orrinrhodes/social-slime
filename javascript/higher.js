@@ -38,4 +38,5 @@ var div1 = spawnElem('div');
 var canvas = spawnElem('canvas');
 
 
-spawnSlime(canvas,100,50,20);
+spawnSlime(canvas,100,150,20);
+spawnSlime(canvas,200,300,20);
