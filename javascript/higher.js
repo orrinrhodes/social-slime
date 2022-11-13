@@ -52,6 +52,10 @@ function spawnElem(elem,prop){
 var canvas = spawnElem('canvas');
 var ctx = canvas.getContext('2d');
 
+function clamp(number, min, max) {
+    return Math.max(min, Math.min(number, max));
+};
+
 function drawSlime(diam){
     var x = Math.random()*canvas.width;
     var y = Math.random()*canvas.height;
@@ -60,7 +64,7 @@ function drawSlime(diam){
 
     // var circle = new Path2D();
     ctx.beginPath();
-    ctx.arc(x,y,diam,0,Math.PI * 2); // circle
+    ctx.arc(clamp(x,diam,canvas.width-diam),clamp(y,diam,canvas.height-diam),diam,0,Math.PI * 2); // circle
     ctx.closePath();
     ctx.fill();
     
