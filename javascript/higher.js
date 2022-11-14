@@ -100,7 +100,10 @@ function slimeInstance(amt){
                 {
                     name:name,
                     color:color,
-                    personality:{emo:0,coolkid:0}
+                    personality:{
+                        emo:0,
+                        coolkid:0,
+                    },
                 },
             );
         };
@@ -121,6 +124,6 @@ function read(){
     console.log('-'.repeat(70));
 };
 
-waitLoop(Infinity,`slimeInstance(3);`,500);
+waitLoop(Infinity,`slimeInstance(3);`,250);
 
 read();
