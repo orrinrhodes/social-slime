@@ -3,6 +3,11 @@ pre{
     font-size: small;
 }
 
+a{
+    font-size: x-large;
+    color: beige;
+}
+
 body{
     background-color:darkslateblue;
     color: beige;
