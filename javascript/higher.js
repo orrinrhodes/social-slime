@@ -1,6 +1,6 @@
 console.log('hi');
 
-var amt = 4;
+var quantity = 3;
 
 var slimes = [];
 var names = [
@@ -129,6 +129,6 @@ function read(){
 
 
 
-waitLoop(Infinity,`slimeInstance(amt);`,250);
+waitLoop(Infinity,`slimeInstance(quantity);`,250);
 
 read();
