@@ -17,36 +17,45 @@ var colors = [
     'white'
 ]
 
-const delay = async (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
+var delay = async (ms = 1000) => new Promise(handler => setTimeout(handler,ms));
+
+async function waitLoop(length,code,ms) {
+    for (var i = 1; i < length; i++) {
+        eval(code);
+        await delay(ms);
+    };
+};
+
+// waitLoop(Infinity,`console.log('❗');`,250);
+
+var canvas = spawnElem('canvas');
+var ctx = canvas.getContext('2d');
+
+function clamp(number, min, max) {
+    return Math.max(min, Math.min(number, max));
+};
+
+var div1 = spawnElem('div');
+
+console.log('-'.repeat(70));
 
 function linear(start,end,t){
     return start*(1-t)+end*t;
 };
 
-async function draw(amt){
-    ctx.clearRect(0,0, canvas.width, canvas.height);
+function drawSlime(diam,color){
+    var x = Math.random()*canvas.width;
+    var y = Math.random()*canvas.height;
+    
+    ctx.fillStyle = color;
 
-    ctx.fillStyle = 'beige';
-    ctx.font = "50px Arial";
-    ctx.fillText('cliques',50,70);
+    // var circle = new Path2D();
+    ctx.beginPath();
+    ctx.arc(clamp(x,diam,canvas.width-diam),clamp(y,diam,canvas.height-diam),diam,0,Math.PI * 2); // circle
+    ctx.closePath();
+    ctx.fill();
 
-    for (i=1; i < amt+1; i++){
-        var color = colors[Math.floor(Math.random()*colors.length)];
-        slimes.push(
-            {
-                slime:slime,
-                name:names[Math.floor(Math.random()*names.length)],
-                color:color,
-                personality:{emo:0,coolkid:0}
-            },
-        );
-        var slime = drawSlime(20,color);
-    };
-
-    drawSlime(50);
-
-    //loop(draw)
-
+    return ctx;
 };
 
 function update(slimes){
@@ -73,35 +82,34 @@ function spawnElem(elem,prop){
     return newElem;
 };
 
-var canvas = spawnElem('canvas');
-var ctx = canvas.getContext('2d');
+function slimeInstance(amt){
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.fillStyle = 'beige';
+    ctx.font = "50px Arial";
+    ctx.fillText('cliques',50,70);
 
-function clamp(number, min, max) {
-    return Math.max(min, Math.min(number, max));
+    for(var i=0; i<amt; i++){
+        var color = colors[Math.floor(Math.random()*colors.length)];
+        var name = names[Math.floor(Math.random()*names.length)];
+        if(slimes[i]){
+            color = slimes[i].color;
+            name = slimes[i].name;
+        }else{
+            // console.log('no slime, give props.');
+            slimes.push(
+                {
+                    name:name,
+                    color:color,
+                    personality:{emo:0,coolkid:0}
+                },
+            );
+        };
+        drawSlime(20,color);
+    };
 };
-
-function drawSlime(diam,color){
-    var x = Math.random()*canvas.width;
-    var y = Math.random()*canvas.height;
-    
-    ctx.fillStyle = color;
-
-    // var circle = new Path2D();
-    ctx.beginPath();
-    ctx.arc(clamp(x,diam,canvas.width-diam),clamp(y,diam,canvas.height-diam),diam,0,Math.PI * 2); // circle
-    ctx.closePath();
-    ctx.fill();
-
-    
-    return ctx;
-};
-
-var div1 = spawnElem('div');
-
-console.log('-'.repeat(70));
 
 function read(){
-    console.log(slimes,'\n');
+    console.log(slimes,);
     slimes.forEach(function(slime){
     var personality = slime.personality;
     for (const [attribute,value] of Object.entries(personality)) {
@@ -109,8 +117,10 @@ function read(){
     };
     // console.warn(slime.name);
     // console.log(personality)
-});
+    });
+    console.log('-'.repeat(70));
 };
 
-draw(3);
+waitLoop(Infinity,`slimeInstance(3);`,500);
+
 read();
