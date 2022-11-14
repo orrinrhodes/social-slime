@@ -125,6 +125,6 @@ function read(){
     console.log('-'.repeat(70));
 };
 
-waitLoop(Infinity,`slimeInstance(3);`,250);
+waitLoop(Infinity,`slimeInstance(6);`,250);
 
 read();
