@@ -1,10 +1,26 @@
+pre{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+}
+
 body{
     background-color:darkslateblue;
     color: beige;
 }
 
-.space{
+#space{
+    /* hi */
     background-color: black;
+    font-size: larger;
+}
+
+#info{
+    /* i will learn how to position stuff eventually... (display) */
+    background-color: grey;
+    position: absolute;
+    left: 550px;
+    width: 350px;
+    height: 500px;
 }
 
 #slimeTitle{

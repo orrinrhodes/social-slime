@@ -106,6 +106,7 @@ function slimeInstance(amt){
                     },
                 },
             );
+            console.log(`${name} spawned.`);
         };
         drawSlime(20,color);
     };
