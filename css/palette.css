@@ -6,3 +6,8 @@ body{
 .space{
     background-color: black;
 }
+
+#slimeTitle{
+    color: yellowgreen;
+    margin-bottom: 0;
+}
