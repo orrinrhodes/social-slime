@@ -1,5 +1,7 @@
 console.log('hi');
 
+var amt = 4;
+
 var slimes = [];
 var names = [
     'bob',
@@ -125,6 +127,8 @@ function read(){
     console.log('-'.repeat(70));
 };
 
-waitLoop(Infinity,`slimeInstance(6);`,250);
+
+
+waitLoop(Infinity,`slimeInstance(amt);`,250);
 
 read();
