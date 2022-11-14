@@ -12,8 +12,8 @@ var names = [
 ];
 
 var colors = [
-    'red',
-    'green',
+    'lightcoral',
+    'yellowgreen',
     'blue',
     'yellow',
     'white'
