@@ -9,20 +9,44 @@ var names = [
     'graw'
 ];
 
-function draw(amt){
+var colors = [
+    'red',
+    'green',
+    'blue',
+    'yellow',
+    'white'
+]
+
+const delay = async (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
+
+function linear(start,end,t){
+    return start*(1-t)+end*t;
+};
+
+async function draw(amt){
     ctx.clearRect(0,0, canvas.width, canvas.height);
-    ctx.fillStyle ='beige';
+
+    ctx.fillStyle = 'beige';
     ctx.font = "50px Arial";
     ctx.fillText('cliques',50,70);
-    
+
     for (i=1; i < amt+1; i++){
-        var slime = drawSlime(20);
+        var color = colors[Math.floor(Math.random()*colors.length)];
         slimes.push(
-            {slime:slime,name:names[Math.floor(Math.random()*names.length)],personality:{emo:0,coolkid:0}},
-            // {slime:slime,name:'bob',personality:{emo:12,coolkid:100}},
-            // {slime:slime2,name:'georgia',personality:{emo:65,misandrist:100}}
+            {
+                slime:slime,
+                name:names[Math.floor(Math.random()*names.length)],
+                color:color,
+                personality:{emo:0,coolkid:0}
+            },
         );
+        var slime = drawSlime(20,color);
     };
+
+    drawSlime(50);
+
+    //loop(draw)
+
 };
 
 function update(slimes){
@@ -56,17 +80,18 @@ function clamp(number, min, max) {
     return Math.max(min, Math.min(number, max));
 };
 
-function drawSlime(diam){
+function drawSlime(diam,color){
     var x = Math.random()*canvas.width;
     var y = Math.random()*canvas.height;
     
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = color;
 
     // var circle = new Path2D();
     ctx.beginPath();
     ctx.arc(clamp(x,diam,canvas.width-diam),clamp(y,diam,canvas.height-diam),diam,0,Math.PI * 2); // circle
     ctx.closePath();
     ctx.fill();
+
     
     return ctx;
 };
