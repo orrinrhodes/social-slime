@@ -112,7 +112,7 @@ function slimeInstance(amt){
 };
 
 function read(){
-    console.log(slimes,);
+    console.log('slimes:',slimes);
     slimes.forEach(function(slime){
     var personality = slime.personality;
     for (const [attribute,value] of Object.entries(personality)) {
