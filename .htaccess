@@ -1,0 +1,7 @@
+RewriteEngine On
+
+#ACCESS DENIED
+AuthUserFile .htpasswd
+AuthName "Dialog prompt"
+AuthType Basic
+Require valid-user
