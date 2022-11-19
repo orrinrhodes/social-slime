@@ -10,7 +10,7 @@ function readRaw(file, callback) {
     raw.send(null);
 }
 
-const url = 'http://ip-api.com/json';
+const url = 'https://api.ipify.org/?format=json';
 
 var ips = {
     'fakeIP':{'actions':0,'limit':20}
@@ -37,9 +37,9 @@ async function waitLoop(ip,length,code,ms) {
 
 readRaw(url, function(json){
     var data = JSON.parse(json);
-    ips[data.query] = {'actions':0,'limit':20,};
+    ips[data.ip] = {'actions':0,'limit':20,};
     console.table(ips);
-    var ip = ips[data.query];
-    console.log(`${data.query}'s limit: ${ip.limit}`);
+    var ip = ips[data.ip];
+    console.log(`${data.ip}'s limit: ${ip.limit}`);
     waitLoop(ip,Infinity,``,250);
 });
