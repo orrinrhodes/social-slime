@@ -8,5 +8,10 @@
             "health": 100,
             "cashmoney": 730
         }
+    },
+    "ips":{
+        "test":{
+            "limit":0
+        }
     }
 }
