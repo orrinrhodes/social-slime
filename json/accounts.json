@@ -3,6 +3,10 @@
         "graw":{
             "health": 100,
             "cashmoney": 730
+        },
+        "bob":{
+            "health": 100,
+            "cashmoney": 730
         }
     }
 }

@@ -1,17 +1,16 @@
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType('application/json');
-    rawFile.open('GET', file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == '200') {
-            callback(rawFile.responseText);
+function readRaw(file, callback) {
+    var raw = new XMLHttpRequest();
+    raw.overrideMimeType('application/json');
+    raw.open('GET', file, true);
+    raw.onreadystatechange = function() {
+        if (raw.readyState === 4 && raw.status == '200') {
+            callback(raw.responseText);
         }
     }
-    rawFile.send(null);
+    raw.send(null);
 }
 
-//usage:
-readTextFile('./json/accounts.json', function(text){
-    var data = JSON.parse(text);
-    console.log(data);
+readRaw('./json/accounts.json', function(json){
+    var data = JSON.parse(json);
+    console.table(data.accounts);
 });
